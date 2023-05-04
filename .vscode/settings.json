@@ -1,0 +1,16 @@
+{
+    "workspace": {
+      "view": 0,
+      "browser": "https://cs50-ths.github.io/problems/c/practice/snackbar/",
+      "files": ["snackbar.c"],
+      "terminals":
+        [
+        {
+          "name": "Main",
+          "color": "blue",
+          "active": true,
+        },
+        ]
+    },
+    "gitdoc.enabled": true
+}
