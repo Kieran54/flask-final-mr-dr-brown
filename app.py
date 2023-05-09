@@ -3,7 +3,9 @@ import os
 from cs50 import SQL
 from flask import Flask
 
-from helpers import apology, login_required, lookup, usd
+from helpers import apology, login_required,
+
+from restcountries import RestCountryApiV2 as rapi
 
 # Configure application
 app = Flask(__name__)
