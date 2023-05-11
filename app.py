@@ -54,8 +54,6 @@ def register():
 
         next_id = count[0]['count(id)'] + 1
 
-        hash = generate_password_hash(password)
-
         if len(username) < 1:
             return apology("must provide username", 403)
         if username in db.execute("SELECT username FROM users"):
@@ -64,10 +62,10 @@ def register():
             return apology("please enter a password", 403)
 
         query = '''
-        INSERT INTO users (id, username, hash, cash)
-        VALUES (?, ?, ?, ?)
+        INSERT INTO database (id, username, password)
+        VALUES (?, ?, ?)
         '''
-        db.execute(query, next_id, username, hash, cash)
-        print(generate_password_hash("test"))
+        db.execute(query, next_id, username, password)
+
     else:
         return render_template("register.html")
