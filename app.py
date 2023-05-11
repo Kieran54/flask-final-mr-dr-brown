@@ -1,3 +1,4 @@
+#!/usr/bin/env python3.10
 import os
 
 from cs50 import SQL
