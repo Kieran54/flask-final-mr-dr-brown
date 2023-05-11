@@ -10,6 +10,9 @@ from restcountries import RestCountryApiV2 as rapi
 # Configure application
 app = Flask(__name__)
 
+def func(name):
+    country_list = rapi.get_countries_by_name("France" ,filters=["name","currencies","capital"])
+
 # Ensure templates are auto-reloaded
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
