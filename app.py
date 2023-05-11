@@ -2,9 +2,9 @@
 import os
 
 from cs50 import SQL
-from flask import Flask
+from flask import Flask, render_template, request
 
-from helpers import apology, login_required
+from helpers import apology
 
 from restcountries import RestCountryApiV2 as rapi
 
@@ -20,9 +20,7 @@ app.config["TEMPLATES_AUTO_RELOAD"] = True
 # Configure CS50 Library to use SQLite database
 db = SQL("sqlite:///database.db")
 
-# Make sure API key is set
-if not os.environ.get("API_KEY"):
-    raise RuntimeError("API_KEY not set")
+
 
 
 @app.after_request
