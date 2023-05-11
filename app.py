@@ -39,13 +39,11 @@ def index():
     return apology("TODO")
 
 @app.route("/login")
-@login_required
 def index():
     """Home Page"""
     return apology("TODO")
 
 @app.route("/register")
-@login_required
 def index():
     """Home Page"""
     return apology("TODO")
