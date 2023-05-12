@@ -2,4 +2,4 @@
 -- that will CREATE the table(s) needed
 -- for the database in your project
 
-
+CREATE TABLE [history]
