@@ -36,8 +36,10 @@ def after_request(response):
 
 @app.route("/")
 def index():
-    """Home Page"""
-    return apology("TODO")
+    if request.template == "POST":
+        app.route{{whatever they click}}
+    else:
+        return render_template("index.html")
 
 @app.route("/enter")
 def enter():
@@ -46,5 +48,5 @@ def enter():
 
 @app.route("/history")
 def history():
-    
+
     return apology("TODO")
