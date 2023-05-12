@@ -2,7 +2,5 @@
 -- that will CREATE the table(s) needed
 -- for the database in your project
 
-CREATE TABLE [history](
-    [id][bigint] IDENTITY(1,1) ,
-    
-    )
+CREATE TABLE 'history' (
+    'id' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, 'country' TEXT, 'time' DATETIME DEFAULT (NOW()));
