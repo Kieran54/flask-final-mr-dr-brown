@@ -4,7 +4,7 @@ import os
 from cs50 import SQL
 from flask import Flask, render_template, request
 
-from helpers import apology, login_required
+from helpers import apology
 
 from restcountries import RestCountryApiV2 as rapi
 
@@ -38,8 +38,8 @@ def index():
     """Home Page"""
     return apology("TODO")
 
-@app.route("/")
-def login():
+@app.route("/enter")
+def enter():
     """Home Page"""
     return apology("TODO")
 
