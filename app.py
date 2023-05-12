@@ -41,10 +41,10 @@ def index():
 
 @app.route("/enter")
 def enter():
-    """Home Page"""
+
     return apology("TODO")
 
 @app.route("/history")
 def history():
-    """Home Page"""
+    
     return apology("TODO")
