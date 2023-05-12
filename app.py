@@ -1,6 +1,8 @@
 #!/usr/bin/env python3.10
 import os
 
+import datetime
+
 from cs50 import SQL
 from flask import Flask, render_template, request
 
@@ -33,7 +35,6 @@ def after_request(response):
 
 
 @app.route("/")
-@login_required
 def index():
     """Home Page"""
     return apology("TODO")
@@ -43,3 +44,7 @@ def enter():
     """Home Page"""
     return apology("TODO")
 
+@app.route("/history")
+def history():
+    """Home Page"""
+    return apology("TODO")
