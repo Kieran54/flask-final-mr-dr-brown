@@ -1,4 +1,5 @@
 -- In this file, write an SQL query
--- that will CREATE the table(s) needed 
+-- that will CREATE the table(s) needed
 -- for the database in your project
+
 
