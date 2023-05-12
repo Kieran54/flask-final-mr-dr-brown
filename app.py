@@ -43,29 +43,3 @@ def login():
     """Home Page"""
     return apology("TODO")
 
-@app.route("/register")
-def register():
-    if request.method == "POST":
-        username = request.form.get("username")
-
-        password = request.form.get("password")
-
-        count = db.execute("SELECT count(id) FROM users")
-
-        next_id = count[0]['count(id)'] + 1
-
-        if len(username) < 1:
-            return apology("must provide username", 403)
-        if username in db.execute("SELECT username FROM users"):
-            return apology("Username already exists", 403)
-        if len(password) < 1:
-            return apology("please enter a password", 403)
-
-        query = '''
-        INSERT INTO database (id, username, password)
-        VALUES (?, ?, ?)
-        '''
-        db.execute(query, next_id, username, password)
-
-    else:
-        return render_template("register.html")
