@@ -3,5 +3,6 @@
 -- for the database in your project
 
 CREATE TABLE [history](
+    [id][bigint] IDENTITY(1,1) ,
     
-)
+    )
