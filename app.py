@@ -37,7 +37,7 @@ def after_request(response):
 @app.route("/")
 def index():
     if request.template == "POST":
-        app.route{{whatever they click}}
+        return render_template("index.html")
     else:
         return render_template("index.html")
 
