@@ -38,7 +38,7 @@ def index():
     """Home Page"""
     return apology("TODO")
 
-@app.route("/login")
+@app.route("/")
 def login():
     """Home Page"""
     return apology("TODO")
