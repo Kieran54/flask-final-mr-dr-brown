@@ -36,12 +36,14 @@ def index():
 def enter():
     count = db.execute("SELECT count(id) FROM history")
     next_id = count[0]['count(id)'] + 1
-    country = request.form.get("country")
+    country = request.values.get("country")
     query = '''
 INSERT INTO history (id, country)
 VALUES (?, ?)
     '''
     db.execute(query, next_id, country)
+
+    
     return apology("TODO")
 
 @app.route("/history")
