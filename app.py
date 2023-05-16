@@ -28,24 +28,20 @@ def after_request(response):
     return response
 
 
-@app.route("/", methods=["GET", "POST"])
+@app.route("/", methods=["get"])
 def index():
-    if request.method == "GET":
-        count = db.execute("SELECT count(id) FROM history")
-        next_id = count[0]['count(id)'] + 1
-        country = request.form.get("country")
-        query = '''
+    return render_template("index.html")
+
+@app.route("/results")
+def enter():
+    count = db.execute("SELECT count(id) FROM history")
+    next_id = count[0]['count(id)'] + 1
+    country = request.form.get("country")
+    query = '''
 INSERT INTO history (id, country)
 VALUES (?, ?)
-        '''
-        db.execute(query, next_id, country)
-
-    else:
-        return render_template("index.html")
-
-@app.route("/enter")
-def enter():
-
+    '''
+    db.execute(query, next_id, country)
     return apology("TODO")
 
 @app.route("/history")
