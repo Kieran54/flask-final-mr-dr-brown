@@ -38,8 +38,8 @@ def after_request(response):
 def index():
     if request.method == "GET":
         return render_template("index.html")
+        country = request.forms.get("country")
     else:
-
         return render_template("index.html")
 
 @app.route("/enter")
