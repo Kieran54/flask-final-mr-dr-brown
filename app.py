@@ -44,8 +44,9 @@ VALUES (?, ?)
     db.execute(query, next_id, country)
 
     if len(country) < 1:
-        return apology("Enter a country")
-    if country not in rapi.get_countries_by_name
+        return apology("Enter a country, 403")
+    if country not in country_list:
+        return apology("Invalid country, 403")
 
 @app.route("/history")
 def history():
