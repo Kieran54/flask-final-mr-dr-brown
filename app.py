@@ -28,9 +28,9 @@ def after_request(response):
     return response
 
 
-@app.route("/", methods=["GET"])
+@app.route("/", methods=["GET", "POST"])
 def index():
-    if request.method == "GET":
+    if request.method == "POST":
         count = db.execute("SELECT count(id) FROM history")
         next_id = count[0]['count(id)'] + 1
         country = request.form.get("country")
