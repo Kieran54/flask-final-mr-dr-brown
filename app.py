@@ -37,9 +37,15 @@ def after_request(response):
 @app.route("/")
 def index():
     if request.method == "GET":
-        return render_template("index.html")
+        count = db.execute("SELECT count(id) FROM birthdays")
+        next_id = count[0]['count(id)'] + 1
         country = request.form.get("country")
-        db.execute(INSERT INTO history.db)
+        query = '''
+INSERT INTO history (id, country)
+VALUES (?, ?)
+        '''
+        db.execute(query, next_id, country)
+        
     else:
         return render_template("index.html")
 
