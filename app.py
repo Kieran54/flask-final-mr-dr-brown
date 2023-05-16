@@ -36,10 +36,10 @@ def after_request(response):
 
 @app.route("/")
 def index():
-    if request.method == "POST":
+    if request.method == "GET":
         return render_template("index.html")
     else:
-        
+
         return render_template("index.html")
 
 @app.route("/enter")
