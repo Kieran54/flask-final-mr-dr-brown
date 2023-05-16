@@ -39,7 +39,7 @@ def index():
     if request.method == "GET":
         return render_template("index.html")
         country = request.form.get("country")
-        db.execute(INSERT country INTO table WHERE )
+        db.execute(INSERT INTO history.db)
     else:
         return render_template("index.html")
 
