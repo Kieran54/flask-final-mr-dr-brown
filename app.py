@@ -39,7 +39,7 @@ def index():
     if request.method == "GET":
         return render_template("index.html")
         country = request.form.get("country")
-        print(country)
+        
     else:
         return render_template("index.html")
 
