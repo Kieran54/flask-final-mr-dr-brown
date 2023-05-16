@@ -43,8 +43,9 @@ VALUES (?, ?)
     '''
     db.execute(query, next_id, country)
 
-    
-    return apology("TODO")
+    if len(country) < 1:
+        return apology("Enter a country")
+    if country not in rapi.get_countries_by_name
 
 @app.route("/history")
 def history():
