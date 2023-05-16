@@ -13,17 +13,11 @@ from restcountries import RestCountryApiV2 as rapi
 # Configure application
 app = Flask(__name__)
 
-def func(name):
-    country_list = rapi.get_countries_by_name("France" ,filters=["name","currencies","capital"])
-
 # Ensure templates are auto-reloaded
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 # Configure CS50 Library to use SQLite database
 db = SQL("sqlite:///history.db")
-
-
-
 
 @app.after_request
 def after_request(response):
@@ -37,7 +31,7 @@ def after_request(response):
 @app.route("/")
 def index():
     if request.method == "GET":
-        count = db.execute("SELECT count(id) FROM birthdays")
+        count = db.execute("SELECT count(id) FROM history")
         next_id = count[0]['count(id)'] + 1
         country = request.form.get("country")
         query = '''
@@ -45,7 +39,7 @@ INSERT INTO history (id, country)
 VALUES (?, ?)
         '''
         db.execute(query, next_id, country)
-        
+
     else:
         return render_template("index.html")
 
