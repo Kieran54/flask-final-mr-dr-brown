@@ -28,13 +28,13 @@ def after_request(response):
     return response
 
 
-@app.route("/", methods=["get"])
-def enter():
-    return render_template("index.html")
+@app.route("/info", methods=["get"])
+def info():
+    return render_template("info.html")
 
 @app.route("/index")
 def index():
-    
+
     count = db.execute("SELECT count(id) FROM history")
     next_id = count[0]['count(id)'] + 1
     country = request.values.get("country")
