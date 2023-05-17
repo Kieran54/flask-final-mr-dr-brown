@@ -28,27 +28,28 @@ def after_request(response):
     return response
 
 
-@app.route("/", methods=["get"])
+@app.route("/", methods=["GET"])
 def index():
     return render_template("index.html")
 
-@app.route("/enter")
+@app.route("/enter", methods=["GET"])
 def enter():
 
-    count = db.execute("SELECT count(id) FROM history")
-    next_id = count[0]['count(id)'] + 1
-    country = request.values.get("country")
-    query = '''
-INSERT INTO history (id, country)
-VALUES (?, ?)
-    '''
-    db.execute(query, next_id, country)
+        count = db.execute("SELECT count(id) FROM history")
+        next_id = count[0]['count(id)'] + 1
+        country = request.values.get("country")
+        query = '''
+    INSERT INTO history (id, country)
+    VALUES (?, ?)
+        '''
+        db.execute(query, next_id, country)
 
-    if len(country) < 1:
-        return apology("Enter a country, 403")
-    if country not in country_list:
-        return apology("Invalid country, 403")
+        if len(country) < 1:
+            return apology("Enter a country, 403")
+        if country not in country_list:
+            return apology("Invalid country, 403")
 
+        return render_template("enter.html")
 @app.route("/info")
 def info():
 
