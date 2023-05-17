@@ -32,7 +32,7 @@ def after_request(response):
 def index():
     return render_template("index.html")
 
-@app.route("/enter", methods=["GET"])
+@app.route("/enter")
 def enter():
 
         count = db.execute("SELECT count(id) FROM history")
