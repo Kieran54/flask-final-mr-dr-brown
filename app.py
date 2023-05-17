@@ -29,7 +29,7 @@ def after_request(response):
 
 
 @app.route("/", methods=["get"])
-def enter():
+def index():
     return render_template("index.html")
 
 @app.route("/enter")
