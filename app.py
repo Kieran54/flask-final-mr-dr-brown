@@ -34,7 +34,7 @@ def enter():
 
 @app.route("/index")
 def index():
-    name = country_list[]
+    
     count = db.execute("SELECT count(id) FROM history")
     next_id = count[0]['count(id)'] + 1
     country = request.values.get("country")
