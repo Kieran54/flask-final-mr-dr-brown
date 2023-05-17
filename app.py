@@ -32,8 +32,8 @@ def after_request(response):
 def enter():
     return render_template("index.html")
 
-@app.route("/index")
-def index():
+@app.route("/enter")
+def enter():
 
     count = db.execute("SELECT count(id) FROM history")
     next_id = count[0]['count(id)'] + 1
@@ -51,5 +51,5 @@ VALUES (?, ?)
 
 @app.route("/info")
 def info():
-    
+
     return apology("TODO")
