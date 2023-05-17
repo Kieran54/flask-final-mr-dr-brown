@@ -28,9 +28,9 @@ def after_request(response):
     return response
 
 
-@app.route("/info", methods=["get"])
-def info():
-    return render_template("info.html")
+@app.route("/", methods=["get"])
+def enter():
+    return render_template("index.html")
 
 @app.route("/index")
 def index():
