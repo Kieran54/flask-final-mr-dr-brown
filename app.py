@@ -29,11 +29,11 @@ def after_request(response):
 
 
 @app.route("/", methods=["get"])
-def index():
+def enter():
     return render_template("index.html")
 
-@app.route("/results")
-def results():
+@app.route("/index")
+def index():
     count = db.execute("SELECT count(id) FROM history")
     next_id = count[0]['count(id)'] + 1
     country = request.values.get("country")
