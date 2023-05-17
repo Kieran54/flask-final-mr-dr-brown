@@ -33,7 +33,7 @@ def index():
     return render_template("index.html")
 
 @app.route("/results")
-def enter():
+def results():
     count = db.execute("SELECT count(id) FROM history")
     next_id = count[0]['count(id)'] + 1
     country = request.values.get("country")
