@@ -49,7 +49,7 @@ VALUES (?, ?)
     if country not in country_list:
         return apology("Invalid country, 403")
 
-@app.route("/history")
-def history():
-
+@app.route("/info")
+def info():
+    
     return apology("TODO")
