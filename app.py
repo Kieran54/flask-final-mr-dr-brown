@@ -34,6 +34,7 @@ def index():
 
 @app.route("/enter")
 def enter():
+    if request.method == "POST":
         count = db.execute("SELECT count(id) FROM history")
         next_id = count[0]['count(id)'] + 1
         country = request.values.get("country")
@@ -47,7 +48,7 @@ def enter():
             return apology("Enter a country, 403")
         if country not in country_list:
             return apology("Invalid country, 403")
-
+    else:
         return render_template("enter.html")
 
 @app.route("/info")
