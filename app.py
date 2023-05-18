@@ -48,6 +48,7 @@ def enter():
             return apology("Enter a country, 403")
         if country not in country_list:
             return apology("Invalid country, 403")
+        return redirect("/enter")
     else:
         return render_template("enter.html")
 
