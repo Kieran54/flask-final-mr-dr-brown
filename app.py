@@ -34,7 +34,7 @@ def index():
 
 @app.route("/enter", methods=["GET"])
 def enter():
-    country_list = rapi.get_countries_by_name('France')
+    
     count = db.execute("SELECT count(id) FROM history")
     next_id = count[0]['count(id)'] + 1
     country = request.values.get("country")
