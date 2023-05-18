@@ -34,7 +34,6 @@ def index():
 
 @app.route("/enter")
 def enter():
-
         count = db.execute("SELECT count(id) FROM history")
         next_id = count[0]['count(id)'] + 1
         country = request.values.get("country")
@@ -50,6 +49,7 @@ def enter():
             return apology("Invalid country, 403")
 
         return render_template("enter.html")
+
 @app.route("/info")
 def info():
 
