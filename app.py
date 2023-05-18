@@ -43,15 +43,13 @@ VALUES (?, ?)
     '''
     db.execute(query, next_id, country)
 
-    return render_template("enter.html")
-
     if len(country) < 1:
         return apology("Enter a country, 403")
     if country not in country_list:
         return apology("Invalid country, 403")
 
     else:
-        @app.route("/info")
+        return render_template("info.html")
 
 @app.route("/info")
 def info():
