@@ -34,24 +34,21 @@ def index():
 
 @app.route("/enter")
 def enter():
-    if request.method == "POST":
-        count = db.execute("SELECT count(id) FROM history")
-        next_id = count[0]['count(id)'] + 1
-        country = request.values.get("country")
-        query = '''
-    INSERT INTO history (id, country)
-    VALUES (?, ?)
-        '''
-        db.execute(query, next_id, country)
+    count = db.execute("SELECT count(id) FROM history")
+    next_id = count[0]['count(id)'] + 1
+    country = request.values.get("country")
+    query = '''
+INSERT INTO history (id, country)
+VALUES (?, ?)
+    '''
+    db.execute(query, next_id, country)
 
-        if len(country) < 1:
-            return apology("Enter a country, 403")
-        if country not in country_list:
-            return apology("Invalid country, 403")
+    if len(country) < 1:
+        return apology("Enter a country, 403")
+    if country not in country_list:
+        return apology("Invalid country, 403")
 
-        return redirect("/enter")
-    else:
-        return render_template("enter.html", history=history)
+    return redirect("/enter")
 
 @app.route("/info")
 def info():
