@@ -43,6 +43,8 @@ VALUES (?, ?)
     '''
     db.execute(query, next_id, country)
 
+    return render_template("enter.html")
+
     if len(country) < 1:
         return apology("Enter a country, 403")
     if country not in country_list:
