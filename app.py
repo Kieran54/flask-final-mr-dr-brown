@@ -48,7 +48,8 @@ VALUES (?, ?)
     if country not in country_list:
         return apology("Invalid country, 403")
 
-    return render_template("/enter")
+    else:
+        @app.route("/info")
 
 @app.route("/info")
 def info():
