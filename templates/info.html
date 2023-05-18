@@ -17,10 +17,35 @@
 
                 <h2>{{country}}</h2>
 
-                <form action ="/index" method ="get">
-                    <input autocomplete = "off" autofocus name="country" placeholder ="Country" type ="text">
+                <form action ="/info" method ="post">
 
-                    <button type ="submit">Enter</button>
+
+                    <div class="section">
+
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Birthday</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- TODO: Loop through the database entries to display them in this table -->
+                                {% for info in history %}
+
+                                    <tr>
+                                        <td>{{ history.country }}</td>
+                                        <td>{{country.capital}}</td>
+                                        <td>{{ bday.day }}</td>
+                                    </tr>
+
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+
 
                 </form>
 
