@@ -4,7 +4,7 @@ import os
 import datetime
 
 from cs50 import SQL
-from flask import Flask, render_template, redirect, request
+from flask import Flask, render_template, request
 
 from helpers import apology
 
@@ -48,7 +48,7 @@ VALUES (?, ?)
     if country not in country_list:
         return apology("Invalid country, 403")
 
-    return redirect("/enter")
+    return render_template("/enter")
 
 @app.route("/info")
 def info():
