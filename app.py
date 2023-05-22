@@ -38,7 +38,7 @@ def enter():
 
     count = db.execute("SELECT count(id) FROM history")
     next_id = count[0]['count(id)'] + 1
-    country = request.values.get("country")
+
     query = '''
 INSERT INTO history (id, country)
 VALUES (?, ?)
@@ -55,5 +55,6 @@ VALUES (?, ?)
 
 @app.route("/info", methods = ["POST"])
 def info():
-    country_info = rapi.get_countries_by_name("country" ,filters=["name","currencies","capital"])
+    country_info = rapi.get_countries_by_name("country" ,filters=["name","flag","capital","subreigon","population",])
+
     return apology("TODO")
