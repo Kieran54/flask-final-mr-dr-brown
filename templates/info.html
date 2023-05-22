@@ -32,15 +32,15 @@
                             </thead>
                             <tbody>
                                 <!-- TODO: Loop through the database entries to display them in this table -->
-                                {% for info in history %}
+                                {% block main %}
 
                                     <tr>
-                                        <td>{{ history.country }}</td>
-                                        <td>{{country.capital}}</td>
-                                        <td>{{ bday.day }}</td>
+                                        <td>{{ flag }}</td>
+                                        <td>{{information}}</td>
+                                        
                                     </tr>
 
-                                {% endfor %}
+                                {% endblock %}
                             </tbody>
                         </table>
                     </div>

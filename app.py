@@ -54,6 +54,7 @@ VALUES (?, ?)
         return render_template("info.html")
 
 @app.route("/info", methods = ["POST"])
+country = db.execute("SELECT name FROM history")
 def thing(country):
     country_info = rapi.get_countries_by_name("SELECT name FROM history" ,filters=["name","capital","subreigon","population",])
     return country_info
