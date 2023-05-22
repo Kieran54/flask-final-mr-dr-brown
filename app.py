@@ -55,13 +55,14 @@ VALUES (?, ?)
 
 @app.route("/info", methods = ["POST"])
 def thing(country):
-    country_info = rapi.get_countries_by_name("country" ,filters=["name","capital","subreigon","population",])
+    country_info = rapi.get_countries_by_name("SELECT name FROM history" ,filters=["name","capital","subreigon","population",])
     return country_info
-def flag(country):
-    country_flag = rapi.get_countries_by_name("country" ,filters=["flag"])
+def picture(country):
+    country_flag = rapi.get_countries_by_name("SELECT name FROM history" ,filters=["flag"])
     return country_flag
 def info():
-    flag = flag(country)
+    flag = picture(country)
     information = thing(country)
 
-    return apology("TODO")
+    return information, flag
+
