@@ -53,7 +53,7 @@ VALUES (?, ?)
     else:
         return render_template("info.html")
 
-@app.route("/info")
+@app.route("/info", methods = ["POST"])
 def info():
-    country_list = rapi.get_countries_by_name("France" ,filters=["name","currencies","capital"])
+    country_info = rapi.get_countries_by_name("country" ,filters=["name","currencies","capital"])
     return apology("TODO")
