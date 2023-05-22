@@ -31,10 +31,10 @@ def after_request(response):
 @app.route("/", methods=["GET"])
 def index():
     return render_template("index.html")
-
-@app.route("/enter", methods=["GET"])
-def foo(country):
     country_list = rapi.get_countries_by_name("France" ,filters=["name","currencies","capital"])
+@app.route("/enter", methods=["GET"])
+
+
 def enter():
 
     count = db.execute("SELECT count(id) FROM history")
