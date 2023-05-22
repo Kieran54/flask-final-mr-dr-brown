@@ -35,32 +35,32 @@ def index():
 
 @app.route("/enter", methods=["GET"])
 def enter():
+        country = request.values.get("country")
+        count = db.execute("SELECT count(id) FROM history")
+        next_id = count[0]['count(id)'] + 1
 
-    count = db.execute("SELECT count(id) FROM history")
-    next_id = count[0]['count(id)'] + 1
+        query = '''
+    INSERT INTO history (id, country)
+    VALUES (?, ?)
+        '''
+        db.execute(query, next_id, country)
 
-    query = '''
-INSERT INTO history (id, country)
-VALUES (?, ?)
-    '''
-    db.execute(query, next_id, country)
+        if len(country) < 1:
+            return apology("Enter a country, 403")
+        if country not in country_list:
+            return apology("Invalid country, 403")
 
-    if len(country) < 1:
-        return apology("Enter a country, 403")
-    if country not in country_list:
-        return apology("Invalid country, 403")
 
-    else:
         return render_template("info.html")
 
 @app.route("/info", methods = ["POST"])
-    country = db.execute("SELECT name FROM history")
+
 def thing(country):
 
     country_info = rapi.get_countries_by_name("SELECT name FROM history" ,filters=["name","capital","subreigon","population",])
     return country_info
 def picture(country):
-    country = db.execute("SELECT name FROM history")
+
     country_flag = rapi.get_countries_by_name("SELECT name FROM history" ,filters=["flag"])
     return country_flag
 def info():
