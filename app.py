@@ -62,5 +62,6 @@ def flag(country):
     return country_flag
 def info():
     flag = flag(country)
+    information = thing(country)
 
     return apology("TODO")
