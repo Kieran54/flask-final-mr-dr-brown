@@ -54,7 +54,7 @@ VALUES (?, ?)
         return render_template("info.html")
 
 @app.route("/info", methods = ["POST"])
-def info():
+def thing(country):
     country_info = rapi.get_countries_by_name("country" ,filters=["name","flag","capital","subreigon","population",])
-
+def info():
     return apology("TODO")
