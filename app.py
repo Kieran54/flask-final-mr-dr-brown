@@ -8,7 +8,8 @@ from flask import Flask, render_template, request
 
 from helpers import apology
 
-from restcountries import RestCountryApiV2 as rapi
+from country_api import CountryAPI
+rapi = CountryAPI()
 
 # Configure application
 app = Flask(__name__)
@@ -35,32 +36,30 @@ def index():
 
 @app.route("/enter", methods=["GET"])
 def enter():
-        country = request.values.get("country")
-        count = db.execute("SELECT count(id) FROM history")
-        next_id = count[0]['count(id)'] + 1
+    return render_template('enter.html')
 
-        query = '''
+@app.route("/info", methods = ["POST"])
+def thing():
+    country = request.values.get("country")
+    country_info = rapi.get_countries_by_name(country)
+    return render_template("info.html", country_info=country_info)
+
+    count = db.execute("SELECT count(id) FROM history")
+    next_id = count[0]['count(id)'] + 1
+    query = '''
     INSERT INTO history (id, country)
     VALUES (?, ?)
         '''
-        db.execute(query, next_id, country)
+    db.execute(query, next_id, country)
 
-        if len(country) < 1:
-            return apology("Enter a country, 403")
-        if country not in country_list:
-            return apology("Invalid country, 403")
+    if len(country) < 1:
+        return apology("Enter a country, 403")
+    if country not in country_list:
+        return apology("Invalid country, 403")
 
 
-        return render_template("info.html")
 
-@app.route("/info", methods = ["POST"])
-
-def thing(country):
-
-    country_info = rapi.get_countries_by_name("SELECT name FROM history" ,filters=["name","capital","subreigon","population",])
-    return country_info
 def picture(country):
-
     country_flag = rapi.get_countries_by_name("SELECT name FROM history" ,filters=["flag"])
     return country_flag
 def info():

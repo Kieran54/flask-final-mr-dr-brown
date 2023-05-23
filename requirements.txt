@@ -2,5 +2,4 @@ cs50
 Flask
 Flask-Session
 requests
-restcountries
-RestCountryApiV2
+python-restcountries
