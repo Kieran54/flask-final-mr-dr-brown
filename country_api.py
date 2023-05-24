@@ -12,6 +12,8 @@ class CountryAPI:
     def get_countries_by_name(self, country):
         url = f'{self.BASE_URL}/{country}?apikey={self.API_KEY}'
         res = requests.get(url)
-        return res.json()
+        data = res.json()
+        keys = list(data.keys())
+        return data[keys[0]]
 
 

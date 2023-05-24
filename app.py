@@ -42,22 +42,16 @@ def enter():
 def thing():
     country = request.values.get("country")
     country_info = rapi.get_countries_by_name(country)
-    return render_template("info.html", country_info=country_info)
-
+    name = country_info['name']
     count = db.execute("SELECT count(id) FROM history")
     next_id = count[0]['count(id)'] + 1
     query = '''
     INSERT INTO history (id, country)
     VALUES (?, ?)
         '''
-    db.execute(query, next_id, country)
+    db.execute(query, next_id, name)
 
-    if len(country) < 1:
-        return apology("Enter a country, 403")
-    if country not in country_list:
-        return apology("Invalid country, 403")
-
-
+    return render_template("info.html", country_info=country_info, flag=country_info['flag']['large'])
 
 def picture(country):
     country_flag = rapi.get_countries_by_name("SELECT name FROM history" ,filters=["flag"])
